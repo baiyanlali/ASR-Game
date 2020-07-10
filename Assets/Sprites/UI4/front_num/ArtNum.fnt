@@ -1,0 +1,15 @@
+info face="Arial" size=32 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1 outline=0
+common lineHeight=32 base=26 scaleW=1534 scaleH=210 pages=1 packed=1 alphaChnl=1 redChnl=0 greenChnl=0 blueChnl=0
+page id=0 file="ArtNum_0.png"
+chars count=11
+char id=48   x=1381  y=0     width=150   height=202   xoffset=0     yoffset=0     xadvance=150   page=0  chnl=15
+char id=49   x=729   y=0     width=125   height=205   xoffset=0     yoffset=0     xadvance=125   page=0  chnl=15
+char id=50   x=443   y=0     width=150   height=205   xoffset=0     yoffset=0     xadvance=150   page=0  chnl=15
+char id=51   x=1243  y=0     width=137   height=203   xoffset=0     yoffset=0     xadvance=137   page=0  chnl=15
+char id=52   x=281   y=0     width=161   height=205   xoffset=0     yoffset=0     xadvance=161   page=0  chnl=15
+char id=53   x=594   y=0     width=134   height=205   xoffset=0     yoffset=0     xadvance=134   page=0  chnl=15
+char id=54   x=138   y=0     width=142   height=206   xoffset=0     yoffset=0     xadvance=142   page=0  chnl=15
+char id=55   x=0     y=0     width=137   height=207   xoffset=0     yoffset=0     xadvance=137   page=0  chnl=15
+char id=56   x=1099  y=0     width=143   height=204   xoffset=0     yoffset=0     xadvance=143   page=0  chnl=15
+char id=57   x=952   y=0     width=146   height=204   xoffset=0     yoffset=0     xadvance=146   page=0  chnl=15
+char id=58   x=855   y=0     width=96    height=205   xoffset=0     yoffset=0     xadvance=96    page=0  chnl=15
