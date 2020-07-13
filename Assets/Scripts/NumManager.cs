@@ -7,10 +7,10 @@ using Random = UnityEngine.Random;
 
 enum Sign
 {
-    Plus,Minus//,Multiply,Divide
+    Plus, Minus//,Multiply,Divide
 }
 
-public class NumManager : MonoBehaviour,IGameManager
+public class NumManager : MonoBehaviour, IGameManager
 {
     public Text numAText;
     public Text numBText;
@@ -22,7 +22,7 @@ public class NumManager : MonoBehaviour,IGameManager
     Sign sign;
     int numA, numB;
     int conclusion;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,10 +35,10 @@ public class NumManager : MonoBehaviour,IGameManager
 
     public void initMaths()
     {
-        string signal="";
+        string signal = "";
         numA = Random.Range(1, 10);
         numB = Random.Range(1, 10);
-        Sign [] signs = Enum.GetValues(typeof(Sign)) as Sign[];
+        Sign [] signs = Enum.GetValues(typeof(Sign)) as Sign [];
         sign = signs [Random.Range(0, 1)];
         switch (sign)
         {
@@ -47,17 +47,17 @@ public class NumManager : MonoBehaviour,IGameManager
                 signal = "+";
                 break;
             case Sign.Minus:
-                if (numA<numB)
+                if (numA < numB)
                 {
                     int t = numA;
                     numA = numB;
                     numB = t;
                 }
                 conclusion = numA - numB;
-                
+
                 signal = "-";
                 break;
-                #region Multiply and divide
+            #region Multiply and divide
             //case Sign.Multiply:
             //    conclusion = numA * numB;
             //    signal = "*";
@@ -71,13 +71,20 @@ public class NumManager : MonoBehaviour,IGameManager
             //    }
             //    break;
 
-                #endregion
+            #endregion
             default:
                 break;
         }
         numAText.text = numA.ToString();
         numBText.text = numB.ToString();
         signText.text = signal;
+        conclusionText.text = "?";
+    }
+
+    IEnumerator nextTurn()
+    {
+        yield return new WaitForSeconds(0.3f);
+        initMaths();
     }
 
     public void checkAnswer(int answer)
@@ -85,14 +92,16 @@ public class NumManager : MonoBehaviour,IGameManager
         conclusionText.text = answer.ToString();
         if (answer == conclusion)
         {
+            WindowsManager.instance.showPumpUpWindows("TRUE");
             ASR.text.text = "You win!";//Debug.Log("You win!");
             gameFlowManager.changeScore(+2);
         }
         else
         {
+            WindowsManager.instance.showPumpUpWindows("FALSE");
             ASR.text.text = "You lose...";//Debug.Log("You lose...");
         }
-        initMaths();
+        StartCoroutine(nextTurn());
         //return answer == conclusion;
     }
 
@@ -100,11 +109,15 @@ public class NumManager : MonoBehaviour,IGameManager
     {
         //if (checkAnswer(int.Parse(answerInputField.text))) ASR.text.text = "You win!";//Debug.Log("You win!");
         //else ASR.text.text = "You lose...";//Debug.Log("You lose...");
-            initMaths();
+        StartCoroutine(nextTurn());
     }
 
     public void recieveAsrResult(string strResult)
     {
+        if (strResult.Equals("pass"))
+        {
+            StartCoroutine(nextTurn());
+        }
         int a = StringTool.TurnWordsIntoInt(strResult);
         //ASR.text.text = "Num Manager has recieve a result:" + a;
         if (a == 999) return;

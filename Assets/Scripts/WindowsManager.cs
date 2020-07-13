@@ -27,6 +27,7 @@ public class WindowsManager : MonoBehaviour
 
     public void initWindows()
     {
+        //print("initWindows");
         audioSource = GetComponent<AudioSource>();
         string windowsBgPath = "prefabs/Windows/WindowsBg";
         GameObject windowsBg = Resources.Load<GameObject>(windowsBgPath);
@@ -57,6 +58,7 @@ public class WindowsManager : MonoBehaviour
 
     public void showConclusionWindows(int score)
     {
+        //print("show conclusion windows");
         conclusionWindows.SetActive(true);
         Text scoreText = conclusionWindows.transform.Find("Text").GetComponent<Text>();
         scoreText.text = $"You have won \n{score}\n scores!!";
@@ -70,12 +72,12 @@ public class WindowsManager : MonoBehaviour
 
     public void replay()
     {
-        ASR.text.text = "replay";
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+        if(ASR.text!=null)ASR.text.text = "replay";
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void returnFunc(){
-        ASR.text.text = "return";
+        if (ASR.text != null) ASR.text.text = "return";
         SceneManager.LoadScene(1);
          //SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
     }

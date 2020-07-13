@@ -396,10 +396,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -718,8 +718,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guoChangUp: {fileID: 0}
   guoChangOut: {fileID: 0}
-  btn: {fileID: 8544611266166525210, guid: 47fbe4bb1cb9e6842b980bd206a17048, type: 3}
-  parent: {fileID: 1281851792}
 --- !u!4 &999589404
 Transform:
   m_ObjectHideFlags: 0

@@ -54,7 +54,7 @@ public class GameFlowManager : MonoBehaviour
 
     IEnumerator StartGame()
     {
-        if (Application.isMobilePlatform)
+        if (WindowsManager.instance!=null)
             WindowsManager.instance.initWindows();
            isOver = true;
            anim_guoChang.runtimeAnimatorController = animControllerOut;
