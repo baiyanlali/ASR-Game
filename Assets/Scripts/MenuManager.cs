@@ -65,7 +65,7 @@ public class MenuManager : MonoBehaviour
     {
         guoChang.SetActive(true);
         Animator anim = guoChang.GetComponent<Animator>();
-        anim.SetTrigger("ZoomUp");
+        anim.Play("UIZoomUp");
 
         AsyncOperation asyn = SceneManager.LoadSceneAsync(SceneName,LoadSceneMode.Single);
         asyn.allowSceneActivation = false;

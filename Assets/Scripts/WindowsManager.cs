@@ -51,7 +51,8 @@ public class WindowsManager : MonoBehaviour
     IEnumerator showPumpUpWindows()
     {
         pumpUpWindows.gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.3f);
+        pumpUpWindows.gameObject.GetComponent<Animator>().Play("PumpUpUp");
+        yield return new WaitForSeconds(1f);
         pumpUpWindows.gameObject.SetActive(false);
         yield return null;
     }
@@ -96,6 +97,7 @@ public class WindowsManager : MonoBehaviour
         WWW www = new WWW($"file://{path}");
         yield return www;
         ASR.text.text = "wav has loaded";
+        
         ac = www.GetAudioClip();
         audioSource.clip = ac;
         

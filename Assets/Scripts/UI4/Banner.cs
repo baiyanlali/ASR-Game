@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class Banner : MonoBehaviour
 {
     public GameObject obj;
-    public ArrayList inputFieldList = new ArrayList();
+    public List<GameObject> inputFieldList = new List<GameObject>();
+    public List<Text> textList;
     public GameObject inputfield;
     
 
@@ -21,8 +22,10 @@ public class Banner : MonoBehaviour
         {
             for (int i = 0; i < inputFieldList.Count; i++)
             {
-                GameObject.Destroy(GameObject.Find((string)inputFieldList[i]));
+                Destroy(inputFieldList[i]);
             }
+            textList.Clear();
+            inputFieldList.Clear();
         }
         int length = question.Length;
         int withd = 80 + 80 * length;//60 +(length-1)*5 + length * 50;
@@ -34,11 +37,12 @@ public class Banner : MonoBehaviour
             string path = "Prefabs/Text";
             GameObject prefab = (GameObject)Resources.Load(path);
             GameObject instance = Instantiate(prefab);
+            textList.Add(instance.GetComponentInChildren<Text>());
             instance.GetComponentInChildren<Text>().text = "";
             instance.transform.SetParent(obj.transform);
             //instance.transform.localScale = new Vector3(1,1,1);
             instance.transform.name = "Text" + i.ToString();
-            inputFieldList.Add(instance.transform.name);
+            inputFieldList.Add(instance);
             //Debug.Log(inputFieldList[i]);
         }
     }
@@ -49,7 +53,7 @@ public class Banner : MonoBehaviour
         char[] chars = word.ToCharArray();
         for (int i = 0; i < chars.Length; i++)
         {
-            inputfield = GameObject.Find((string) inputFieldList[i]);
+            inputfield =  inputFieldList[i];
             //Debug.Log((string) inputFieldList[i]);
             Text text = inputfield.transform.GetComponent<Text>();
             text.text = chars[i].ToString();
@@ -59,12 +63,13 @@ public class Banner : MonoBehaviour
     {
         try
         {
-            inputfield = GameObject.Find((string) inputFieldList[index]).gameObject.transform.Find("Char").gameObject;
+            inputfield = inputFieldList[index].gameObject.transform.Find("Char").gameObject;
             inputfield.GetComponent<Animator>().Play("CharShowUp");
 
             //Debug.Log((string) inputFieldList[i]);
-            Text text = inputfield.transform.GetComponent<Text>();
-            text.text = word;
+            textList [index].text = word;
+            //Text text = inputfield.transform.GetComponent<Text>();
+            //text.text = word;
             if(Application.isMobilePlatform)
                 ASR.text.text = word;
         }

@@ -15,6 +15,10 @@ public class SpellGameManager : MonoBehaviour,IGameManager
     //the input of user
     public string userAnswer;
 
+    int wordTotal;
+
+    Sprite [] images;
+
     int wordIndex = 0;
     
 
@@ -27,8 +31,14 @@ public class SpellGameManager : MonoBehaviour,IGameManager
         {
             return "end";
         }
-        string result = (string)WordList[0];
-        WordList.Remove(result);
+
+            //print($"{wordOrder [0]} is {WordList[wordOrder [0]]}");
+
+        
+        
+        string result = (string)WordList[wordOrder[0]];
+        wordOrder.RemoveAt(0);
+        //WordList.Remove(result);
         wordNow = result;
         return result;
     }
@@ -44,6 +54,12 @@ public class SpellGameManager : MonoBehaviour,IGameManager
     //load next question
     IEnumerator nextPicture()
     {
+        //print("next picture!");
+        if (wordTotal==images.Length)
+        {
+            gameFlowManager.gameOver();
+        }
+        wordTotal++;
         //If it's played more than one turn
         if (wordIndex != 0)
             yield return new WaitForSeconds(1f);
@@ -64,37 +80,50 @@ public class SpellGameManager : MonoBehaviour,IGameManager
     //initial the WordList
     private void initialWordList()
     {
-        foreach (string str in Words.wordsToChoose)
+        string path = "Pictures" ;
+        images = Resources.LoadAll<Sprite>(path);
+
+        foreach (Sprite sprite in images)
         {
-            WordList.Add(str);
+            WordList.Add(sprite.name);
         }
+
     }
-    
+
+    List<int> wordOrder;
+
     void Start()
     {
         wordIndex = 0;
         gameFlowManager = GameObject.Find("GameFlowManager").GetComponent<GameFlowManager>();
        initialWordList();
+        wordOrder = new List<int>();
+        wordOrder.AddRange( MathTool.DisorderSeq(0, WordList.Count - 1));
+        //foreach (var item in wordOrder)
+        //{
+        //    print(item);
+        //}
        StartCoroutine( nextPicture());
     }
 
    
     void Update()
     {
-        //banner.showAnwser(userAnswer);
-        //if (wordNow.Equals(userAnswer))
-        //{
-        //    nextPicture();
-        //}
-
+        CD += Time.deltaTime;
         
 
     }
+    float CD;
 
     public void recieveAsrResult(string strResult)
     {
+        //if (CD<=1f)
+        //{
+        //    //print("CD has not reach!");
+        //    return;
+        //}
         strResult = strResult.Trim().ToUpper();
-        if (strResult.Equals("pass"))
+        if (strResult.Equals("PASS"))
         {
             StartCoroutine(nextPicture());
             
@@ -102,23 +131,27 @@ public class SpellGameManager : MonoBehaviour,IGameManager
         }
         else if (strResult.Length > 2)
         {
-            if(Application.isMobilePlatform)
+            if (Application.isMobilePlatform)
                 ASR.text.text = $"{strResult} is to much";
-            else print($"{strResult} is to much");
+            //else print($"{strResult} is to much");
             return;
         }
         //print($"you need {wordNow.ToCharArray() [wordIndex]}, you have {strResult}, so {strResult.Equals(wordNow.ToCharArray() [wordIndex].ToString())} ");
         if (strResult.Equals(wordNow.ToCharArray()[wordIndex].ToString()))
         {
-
-            Debug.Log("equals");
+            CD = 0;
+            gameFlowManager.changeScore(+1);
+            //Debug.Log("equals");
+            //print(wordIndex);
             banner.showAnwser(strResult,wordIndex);
             wordIndex++;
+            WindowsManager.instance.showPumpUpWindows("GOOD");
         }
 
 
         if (wordIndex == wordNow.Length) 
         {
+            WindowsManager.instance.showPumpUpWindows("EXCELLENT");
             StartCoroutine(nextPicture());
             
         }

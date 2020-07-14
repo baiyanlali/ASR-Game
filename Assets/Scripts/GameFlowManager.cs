@@ -19,8 +19,6 @@ public class GameFlowManager : MonoBehaviour
     public Text reverseCount;
     public Text scoreText, timeText;
     public Animator anim_guoChang;
-    public RuntimeAnimatorController animControllerUp;
-    public RuntimeAnimatorController animControllerOut;
 
     private StringBuilder str;
     private string str_before;
@@ -56,17 +54,19 @@ public class GameFlowManager : MonoBehaviour
     {
         if (WindowsManager.instance!=null)
             WindowsManager.instance.initWindows();
-           isOver = true;
-           anim_guoChang.runtimeAnimatorController = animControllerOut;
-           yield return new WaitForSeconds(1f);
-           guoChang.SetActive(false);
-           reverseCount.gameObject.SetActive(true);
-           reverseCount.text = "3";
-           yield return new WaitForSeconds(1f);
-           reverseCount.text = "2";
-           yield return new WaitForSeconds(1f);
-           reverseCount.text = "1";
-           yield return new WaitForSeconds(1f);
+        isOver = true;
+         
+        //anim_guoChang.runtimeAnimatorController = animControllerOut;
+        anim_guoChang.Play("UIZoomOut");
+        yield return new WaitForSeconds(1f);
+        guoChang.SetActive(false);
+        reverseCount.gameObject.SetActive(true);
+        reverseCount.text = "3";
+        yield return new WaitForSeconds(1f);
+        reverseCount.text = "2";
+        yield return new WaitForSeconds(1f);
+        reverseCount.text = "1";
+        yield return new WaitForSeconds(1f);
         
         reverseCount.gameObject.SetActive(false);
         gameManager.SetActive(true);
@@ -183,7 +183,8 @@ public class GameFlowManager : MonoBehaviour
 
         }
         //guoChang.SetActive(true);
-        anim_guoChang.runtimeAnimatorController = animControllerUp;
+        //anim_guoChang.runtimeAnimatorController = animControllerUp;
+        //anim_guoChang.Play("UIZoomUp");
 
         AsyncOperation asyn = SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
         asyn.allowSceneActivation = false;

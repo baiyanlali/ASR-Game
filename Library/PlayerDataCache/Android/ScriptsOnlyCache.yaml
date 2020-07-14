@@ -9,11 +9,6 @@ ScriptsOnlyBuild:
     - SpellGameManager
     - WindowsManager
     - configManager
-    Unity.TextMeshPro.dll:
-    - TMPro.TMP_FontAsset
-    - TMPro.TMP_Settings
-    - TMPro.TMP_SpriteAsset
-    - TMPro.TMP_StyleSheet
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
@@ -166,7 +161,11 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 20
       Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
     - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
       Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
@@ -191,12 +190,18 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9340}
     - Class: 114
+      Script: {instanceID: 9374}
+    - Class: 114
       Script: {instanceID: 9376}
+    - Class: 114
+      Script: {instanceID: 9378}
     - Class: 114
       Script: {instanceID: 9622}
     - Class: 114
       Script: {instanceID: 9702}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -284,8 +289,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
-    - Class: 49
-      Script: {instanceID: 0}
     - Class: 50
       Script: {instanceID: 0}
     - Class: 58
@@ -299,8 +302,6 @@ ScriptsOnlyBuild:
     - Class: 95
       Script: {instanceID: 0}
     - Class: 104
-      Script: {instanceID: 0}
-    - Class: 109
       Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 9318}
@@ -320,14 +321,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 9378}
     - Class: 114
       Script: {instanceID: 9524}
-    - Class: 114
-      Script: {instanceID: 9546}
-    - Class: 114
-      Script: {instanceID: 9664}
-    - Class: 114
-      Script: {instanceID: 9670}
-    - Class: 114
-      Script: {instanceID: 9846}
     - Class: 114
       Script: {instanceID: 9882}
     - Class: 115
@@ -779,7 +772,7 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: b2b6ae32b726b0d0a97bf0f3b3a404db
+      Hash: 9c350b654cd2f3a4e92cd92010aff251
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameFlowManager
@@ -911,7 +904,7 @@ ScriptsOnlyBuild:
     className: DataPrivacyButton
   - hash:
       serializedVersion: 2
-      Hash: fd36a1e493a5af2b29afc555ccb77137
+      Hash: 1c67935e5a43b22a3006716136afe2f0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Banner

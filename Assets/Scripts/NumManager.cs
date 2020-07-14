@@ -92,13 +92,13 @@ public class NumManager : MonoBehaviour, IGameManager
         conclusionText.text = answer.ToString();
         if (answer == conclusion)
         {
-            WindowsManager.instance.showPumpUpWindows("TRUE");
+            WindowsManager.instance.showPumpUpWindows("GREAT");
             ASR.text.text = "You win!";//Debug.Log("You win!");
             gameFlowManager.changeScore(+2);
         }
         else
         {
-            WindowsManager.instance.showPumpUpWindows("FALSE");
+            WindowsManager.instance.showPumpUpWindows("PITY");
             ASR.text.text = "You lose...";//Debug.Log("You lose...");
         }
         StartCoroutine(nextTurn());

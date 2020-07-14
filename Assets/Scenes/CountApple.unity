@@ -1635,7 +1635,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 461fa1dfadaa9fc4e962ea14b5cf1eb1, type: 2}
+      objectReference: {fileID: 9100000, guid: 1c50d0a4143a02749a472791598ce1b6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a55ecf6ed10fcb94e9b99964303d5075, type: 3}
 --- !u!224 &1906336886 stripped
@@ -2121,7 +2121,7 @@ PrefabInstance:
     - target: {fileID: 2540340738643923674, guid: dff84a37182acb74cbac955af4cd74bf,
         type: 3}
       propertyPath: totalTime
-      value: 20
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2540340738643923674, guid: dff84a37182acb74cbac955af4cd74bf,
         type: 3}

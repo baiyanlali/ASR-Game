@@ -218,6 +218,10 @@ public class CountingAppleManager : MonoBehaviour,IGameManager
 
     public void recieveAsrResult(string strResult)
     {
+        if (strResult.Equals("pass")) 
+        {
+            StartCoroutine(NextTurn());
+        }
         int a = StringTool.TurnWordsIntoInt(strResult);
         if (a == 999) return;
         checkAnswer(a);
