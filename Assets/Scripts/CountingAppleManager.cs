@@ -159,11 +159,12 @@ public class CountingAppleManager : MonoBehaviour,IGameManager
         }
         else
         {
+            WindowsManager.instance.showPumpUpWindows("TRY AGAIN");
             //ASR.text.text = "Try one more time!";
-            foreach (GameObject apple in applesValid)
-            {
-                apple.GetComponent<Animator>().SetTrigger("ShowMistake");
-            }
+            //foreach (GameObject apple in applesValid)
+            //{
+            //    apple.GetComponent<Animator>().SetTrigger("ShowMistake");
+            //}
         }
     }
 

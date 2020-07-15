@@ -28,6 +28,7 @@ public class WindowsManager : MonoBehaviour
     public void initWindows()
     {
         //print("initWindows");
+        isPlaying = false;
         audioSource = GetComponent<AudioSource>();
         string windowsBgPath = "prefabs/Windows/WindowsBg";
         GameObject windowsBg = Resources.Load<GameObject>(windowsBgPath);
@@ -38,6 +39,17 @@ public class WindowsManager : MonoBehaviour
         pumpUpWindows = Instantiate(Resources.Load<GameObject>(pumpUpWindowsPath), GameObject.Find("Canvas").transform).GetComponent<Text>();
         pumpUpWindows.gameObject.SetActive(false);
         //conclusionWindows.transform.SetParent();
+
+        #region init Conclusion win
+        Button replayBtn = conclusionWindows.transform.Find("ReplayBtn").GetComponent<Button>();
+        replayBtn.onClick.AddListener(replay);
+        Button returnBtn = conclusionWindows.transform.Find("ReturnBtn").GetComponent<Button>();
+        returnBtn.onClick.AddListener(returnFunc);
+        Button playBtn = conclusionWindows.transform.Find("PlayBtn").GetComponent<Button>();
+        playBtn.onClick.AddListener(delegate { playWav(configManager.instance.mySetting.lang); });
+        wavSlider = conclusionWindows.GetComponentInChildren<Slider>();
+        scoreText = conclusionWindows.transform.Find("Text").GetComponent<Text>();
+        #endregion
 
     }
 
@@ -57,32 +69,31 @@ public class WindowsManager : MonoBehaviour
         yield return null;
     }
 
+    
+        Text scoreText;
     public void showConclusionWindows(int score)
     {
         //print("show conclusion windows");
         conclusionWindows.SetActive(true);
-        Text scoreText = conclusionWindows.transform.Find("Text").GetComponent<Text>();
         scoreText.text = $"You have won \n{score}\n scores!!";
-        Button replayBtn = conclusionWindows.transform.Find("ReplayBtn").GetComponent<Button>();
-        replayBtn.onClick.AddListener(replay);
-        Button returnBtn = conclusionWindows.transform.Find("ReturnBtn").GetComponent<Button>();
-        returnBtn.onClick.AddListener(returnFunc);
-        Button playBtn = conclusionWindows.transform.Find("PlayBtn").GetComponent<Button>();
-        playBtn.onClick.AddListener(delegate { playWav(configManager.instance.mySetting.lang); });
+        
     }
 
     public void replay()
     {
+        audioSource.Stop();
         if(ASR.text!=null)ASR.text.text = "replay";
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void returnFunc(){
+        audioSource.Stop();
         if (ASR.text != null) ASR.text.text = "return";
         SceneManager.LoadScene(1);
          //SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
     }
 
+    bool isPlaying = false;
     AudioClip ac;
     public void playWav(int lang)
     {
@@ -97,10 +108,27 @@ public class WindowsManager : MonoBehaviour
         WWW www = new WWW($"file://{path}");
         yield return www;
         ASR.text.text = "wav has loaded";
+
+
         
         ac = www.GetAudioClip();
         audioSource.clip = ac;
         
         audioSource.Play();
+
+        
     }
+
+    public Slider wavSlider;
+
+    private void Update()
+    {
+        if (audioSource!=null && audioSource.isPlaying)
+        {
+            wavSlider.value =
+            audioSource.time / audioSource.clip.length;
+
+        }
+    }
+
 }

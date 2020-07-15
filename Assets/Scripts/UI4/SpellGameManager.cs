@@ -145,7 +145,7 @@ public class SpellGameManager : MonoBehaviour,IGameManager
             //print(wordIndex);
             banner.showAnwser(strResult,wordIndex);
             wordIndex++;
-            WindowsManager.instance.showPumpUpWindows("GOOD");
+            //WindowsManager.instance.showPumpUpWindows("GOOD");
         }
 
 

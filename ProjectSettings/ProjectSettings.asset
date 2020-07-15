@@ -704,10 +704,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: eafb31a1-83b7-44ea-9218-936b62d4b37d
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: Maths
+  organizationId: lalibaiyan
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

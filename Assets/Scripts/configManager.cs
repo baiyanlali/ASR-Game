@@ -45,7 +45,7 @@ public class configManager : MonoBehaviour
 
     IEnumerator onStartSetup()
     {
-        requestPermission();
+        //requestPermission();
         loadSetting();
         yield return StartCoroutine(serverRequest());
         yield return StartCoroutine(loadScene(1));
@@ -53,6 +53,7 @@ public class configManager : MonoBehaviour
 
     void requestPermission()
     {
+        status.text = "need microphone request";
         string DEFAULT_DEVICE = Microphone.devices [0];
         if (!Microphone.IsRecording(DEFAULT_DEVICE))
         {
@@ -63,6 +64,7 @@ public class configManager : MonoBehaviour
 
     IEnumerator serverRequest()
     {
+        status.text = "server request";
         foreach (var item in directories)
         {
             yield return StartCoroutine(requestFileBuffer($"{item}/checksum"));
@@ -118,7 +120,7 @@ public class configManager : MonoBehaviour
     {
         UnityWebRequest www = new UnityWebRequest($"{requestDomainName}{serverPath}");
         www.downloadHandler = new DownloadHandlerBuffer();
-        status.text = "Downloading...";
+        status.text = "request file buffer";
         yield return www.SendWebRequest();
 
         if (www.isNetworkError || www.isHttpError)
@@ -141,8 +143,8 @@ public class configManager : MonoBehaviour
         var myWr = new UnityWebRequest($"{requestDomainName}{serverPath}", UnityWebRequest.kHttpVerbGET);
         string path = Path.Combine(Application.persistentDataPath, targetPath);
         myWr.downloadHandler = new DownloadHandlerFile(path);
-        // status.text = ($"downloading {serverPath}");
-        status.text = "Downloading...";
+        status.text = ($"downloading {serverPath}");
+        //status.text = "Downloading...";
         myWr.SendWebRequest();
         while (!myWr.isDone)
         {
@@ -153,11 +155,13 @@ public class configManager : MonoBehaviour
 
         if (myWr.isNetworkError || myWr.isHttpError)
         {
-            // status.text=($"myWr erro {myWr.error} ");
+            print($"myWr erro {myWr.error} ");
+             status.text=($"myWr erro {myWr.error} ");
         }
         else
         {
-            // status.text=($"file save to ${path}");
+            print($"file save to ${path}");
+             status.text=($"file save to ${path}");
         }
     }
 
@@ -182,7 +186,16 @@ public class configManager : MonoBehaviour
                             #region NEW ADDED
                             stream.Close();
                             print($"{fileName} has been deleted");
-                            File.Delete(fileName);
+                            try
+                            {
+                                File.Delete(fileName);
+                            }
+                            catch (Exception o)
+                            {
+                                print(o.Message);
+                                status.text = o.Message;
+                                throw;
+                            }
                             #endregion
                             yield return StartCoroutine(requestFile($"{dir}/{innerWords [1]}", $"{dir}/{innerWords [1]}"));
                         }
