@@ -22,11 +22,13 @@ public class NumManager : MonoBehaviour, IGameManager
     Sign sign;
     int numA, numB;
     int conclusion;
+    int mistake;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        mistake = 0;
         initMaths();
     }
 
@@ -98,9 +100,15 @@ public class NumManager : MonoBehaviour, IGameManager
         }
         else
         {
-            WindowsManager.instance.showPumpUpWindows("PITY");
+            mistake++;
+            if (mistake < 3)
+            {
+                WindowsManager.instance.showPumpUpWindows("TRY");
+                return;
+            }
             ASR.text.text = "You lose...";//Debug.Log("You lose...");
         }
+        mistake = 0;
         StartCoroutine(nextTurn());
         //return answer == conclusion;
     }

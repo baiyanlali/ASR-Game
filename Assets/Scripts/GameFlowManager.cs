@@ -94,7 +94,7 @@ public class GameFlowManager : MonoBehaviour
                }
            }
         }
-        if (!ASRIsOn) return;
+        if (ASRIsOn==false) return;
         try
         {
             timeForCalling += Time.fixedDeltaTime;
@@ -104,7 +104,7 @@ public class GameFlowManager : MonoBehaviour
                 timeForCalling %= timePerCalling;
                 str_before = str.ToString();
 
-                ASR.catchPlay(0, str);
+                ASR.catchPlay(1, str);
 
                 //ASR.text.text =  str.ToString()+"| |"+str_before;
                 //ASR.text.text = "";
@@ -178,21 +178,12 @@ public class GameFlowManager : MonoBehaviour
         ASRIsOn = false;
         if (Application.isMobilePlatform)
         {
-            ASR.stopPlay(0, str);
-            //ASR.recorderSetDown(1);
+            str.Capacity = 1024;
+            ASR.stopPlay(1, str);
 
         }
-        //guoChang.SetActive(true);
-        //anim_guoChang.runtimeAnimatorController = animControllerUp;
-        //anim_guoChang.Play("UIZoomUp");
 
-        AsyncOperation asyn = SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
-        asyn.allowSceneActivation = false;
-
-        //Scene scene = SceneManager.GetSceneByName(SceneName);
-        yield return new WaitForSeconds(1f);
         WindowsManager.instance.showConclusionWindows(score);
-        //asyn.allowSceneActivation = true;
         yield return null;
     }
 

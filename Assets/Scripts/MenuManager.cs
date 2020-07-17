@@ -9,21 +9,7 @@ public class MenuManager : MonoBehaviour
 
     GameObject guoChang ;
     Animator anim_guoChang;
-    public RuntimeAnimatorController guoChangUp;
-    public RuntimeAnimatorController guoChangOut;
 
-    //#region Test
-    //public GameObject btn;
-    //public GameObject parent;
-    //public void addBtn()
-    //{
-    //    GameObject a = Instantiate(btn);
-    //    a.transform.SetParent(parent.transform);
-    //}
-
-    //#endregion
-
-    // Start is called before the first frame update
     void Start()
     {
         guoChang = GameObject.Find("GuoChang");
@@ -41,20 +27,14 @@ public class MenuManager : MonoBehaviour
     {
         guoChang = GameObject.Find("GuoChang");
         anim_guoChang = guoChang.GetComponent<Animator>();
-        if (arg1.buildIndex == 0)
+        if (arg1.buildIndex == 1)
         {
             guoChang.SetActive(true);
-            //anim_guoChang.runtimeAnimatorController = guoChangOut;
         }
-        //print("Back!");
-        //throw new System.NotImplementedException();
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 
     public void LoadScene(string SceneName)
     {

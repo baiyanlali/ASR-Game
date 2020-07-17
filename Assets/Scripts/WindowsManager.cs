@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 public class WindowsManager : MonoBehaviour
 {
     public static WindowsManager instance;
-    public Text pumpUpWindows;
-    public GameObject conclusionWindows;
     public AudioSource audioSource;
 
     void Start()
@@ -25,6 +23,9 @@ public class WindowsManager : MonoBehaviour
         }
     }
 
+    public Text pumpUpWindows;
+    public GameObject conclusionWindows;
+    public GameObject pauseWindow;
     public void initWindows()
     {
         //print("initWindows");
@@ -51,8 +52,29 @@ public class WindowsManager : MonoBehaviour
         scoreText = conclusionWindows.transform.Find("Text").GetComponent<Text>();
         #endregion
 
+
+        string PauseWindowPath = "prefabs/Windows/PauseWindow";
+        pauseWindow = Instantiate(Resources.Load<GameObject>(PauseWindowPath), GameObject.Find("Canvas").transform);
+        pauseWindow.gameObject.SetActive(false);
+        pauseWindow.transform.Find("ReturnBtn").GetComponent<Button>().onClick.AddListener(returnFunc);
+        pauseWindow.transform.Find("CloseBtn").GetComponent<Button>().onClick.AddListener(shutOffPauseWindows);
+
+        Button pauseBtn = GameObject.Find("PauseBtn").GetComponent<Button>();
+        pauseBtn.onClick.AddListener(showPauseWindows);
     }
 
+    public void showPauseWindows()
+    {
+        if (conclusionWindows.activeInHierarchy) return;
+        pauseWindow.gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void shutOffPauseWindows()
+    {
+        pauseWindow.gameObject.SetActive(false);
+        Time.timeScale = 1;
+    }
 
     public void showPumpUpWindows(string title)
     {
@@ -82,15 +104,13 @@ public class WindowsManager : MonoBehaviour
     public void replay()
     {
         audioSource.Stop();
-        if(ASR.text!=null)ASR.text.text = "replay";
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void returnFunc(){
         audioSource.Stop();
-        if (ASR.text != null) ASR.text.text = "return";
-        SceneManager.LoadScene(1);
-         //SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
+        Time.timeScale = 1;
+        SceneManager.LoadSceneAsync(1);
     }
 
     bool isPlaying = false;

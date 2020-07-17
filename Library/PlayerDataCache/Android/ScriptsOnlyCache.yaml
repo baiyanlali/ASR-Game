@@ -30,7 +30,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
   sceneClasses:
-    Assets/Scenes/CountApple.unity:
+    Assets/Scenes/Games/CountApple.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -99,7 +99,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 224
       Script: {instanceID: 0}
-    Assets/Scenes/DoMath.unity:
+    Assets/Scenes/Games/DoMath.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -123,6 +123,8 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
+      Script: {instanceID: 9318}
+    - Class: 114
       Script: {instanceID: 9320}
     - Class: 114
       Script: {instanceID: 9326}
@@ -138,6 +140,67 @@ ScriptsOnlyBuild:
       Script: {instanceID: 9490}
     - Class: 114
       Script: {instanceID: 9524}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/Games/Spell.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 9318}
+    - Class: 114
+      Script: {instanceID: 9320}
+    - Class: 114
+      Script: {instanceID: 9326}
+    - Class: 114
+      Script: {instanceID: 9332}
+    - Class: 114
+      Script: {instanceID: 9334}
+    - Class: 114
+      Script: {instanceID: 9340}
+    - Class: 114
+      Script: {instanceID: 9376}
+    - Class: 114
+      Script: {instanceID: 9378}
+    - Class: 114
+      Script: {instanceID: 9524}
+    - Class: 114
+      Script: {instanceID: 9704}
+    - Class: 114
+      Script: {instanceID: 9792}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -204,67 +267,6 @@ ScriptsOnlyBuild:
     - Class: 128
       Script: {instanceID: 0}
     - Class: 157
-      Script: {instanceID: 0}
-    - Class: 213
-      Script: {instanceID: 0}
-    - Class: 222
-      Script: {instanceID: 0}
-    - Class: 223
-      Script: {instanceID: 0}
-    - Class: 224
-      Script: {instanceID: 0}
-    Assets/Scenes/Spell.unity:
-    - Class: 1
-      Script: {instanceID: 0}
-    - Class: 4
-      Script: {instanceID: 0}
-    - Class: 20
-      Script: {instanceID: 0}
-    - Class: 21
-      Script: {instanceID: 0}
-    - Class: 28
-      Script: {instanceID: 0}
-    - Class: 48
-      Script: {instanceID: 0}
-    - Class: 74
-      Script: {instanceID: 0}
-    - Class: 81
-      Script: {instanceID: 0}
-    - Class: 91
-      Script: {instanceID: 0}
-    - Class: 95
-      Script: {instanceID: 0}
-    - Class: 104
-      Script: {instanceID: 0}
-    - Class: 114
-      Script: {instanceID: 9318}
-    - Class: 114
-      Script: {instanceID: 9320}
-    - Class: 114
-      Script: {instanceID: 9326}
-    - Class: 114
-      Script: {instanceID: 9332}
-    - Class: 114
-      Script: {instanceID: 9334}
-    - Class: 114
-      Script: {instanceID: 9340}
-    - Class: 114
-      Script: {instanceID: 9376}
-    - Class: 114
-      Script: {instanceID: 9378}
-    - Class: 114
-      Script: {instanceID: 9524}
-    - Class: 114
-      Script: {instanceID: 9704}
-    - Class: 114
-      Script: {instanceID: 9792}
-    - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
-      Script: {instanceID: 0}
-    - Class: 157
-      Script: {instanceID: 0}
-    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -820,7 +822,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
-      Hash: 1e0c21557ff7502e05c5af6ecd49e18e
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MenuManager
@@ -880,7 +882,7 @@ ScriptsOnlyBuild:
     className: TestResultRendererCallback
   - hash:
       serializedVersion: 2
-      Hash: 41661b0978a7553536528a168d525142
+      Hash: 5465d08175ec77db9d1f0083e1c58a93
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WindowsManager
@@ -960,7 +962,7 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/StartUpScene.unity
   - Assets/Scenes/Menu(Another)Scene.unity
-  - Assets/Scenes/CountApple.unity
-  - Assets/Scenes/DoMath.unity
-  - Assets/Scenes/Spell.unity
+  - Assets/Scenes/Games/CountApple.unity
+  - Assets/Scenes/Games/DoMath.unity
+  - Assets/Scenes/Games/Spell.unity
   playerPath: "C:/Users/asus/OneDrive/\u684C\u9762/ASR.apk"
