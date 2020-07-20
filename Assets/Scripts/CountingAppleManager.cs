@@ -127,15 +127,18 @@ public class CountingAppleManager : MonoBehaviour,IGameManager
 
     public void Win()
     {
+        #region particle
         //if (isOver) return;
-        if (winParticle==null)
-        { 
-            //Debug.Log("win!");
-            winParticle = Instantiate(winParticlePrefab);
-        }
-        //winParticle.Emit(5);
-        winParticle.collision.SetPlane(1,GameObject.Find("Bound").transform);
-        winParticle.Play(true);
+        //if (winParticle==null)
+        //{ 
+        //    //Debug.Log("win!");
+        //    winParticle = Instantiate(winParticlePrefab);
+        //}
+        ////winParticle.Emit(5);
+        //winParticle.collision.SetPlane(1,GameObject.Find("Bound").transform);
+        //winParticle.Play(true);
+        #endregion 
+        WindowsManager.instance.showPumpUpWindows(true);
         gameFlowManager.changeScore(+2);
         //score++;
         StartCoroutine(NextTurn());
@@ -159,7 +162,8 @@ public class CountingAppleManager : MonoBehaviour,IGameManager
         }
         else
         {
-            WindowsManager.instance.showPumpUpWindows("TRY AGAIN");
+            //WindowsManager.instance.showPumpUpWindows("TRY AGAIN");
+            WindowsManager.instance.showPumpUpWindows(false);
             //ASR.text.text = "Try one more time!";
             //foreach (GameObject apple in applesValid)
             //{

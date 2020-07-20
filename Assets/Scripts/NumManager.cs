@@ -94,7 +94,8 @@ public class NumManager : MonoBehaviour, IGameManager
         conclusionText.text = answer.ToString();
         if (answer == conclusion)
         {
-            WindowsManager.instance.showPumpUpWindows("GREAT");
+            //WindowsManager.instance.showPumpUpWindows("GREAT");
+            WindowsManager.instance.showPumpUpWindows(true);
             ASR.text.text = "You win!";//Debug.Log("You win!");
             gameFlowManager.changeScore(+2);
         }
@@ -103,7 +104,8 @@ public class NumManager : MonoBehaviour, IGameManager
             mistake++;
             if (mistake < 3)
             {
-                WindowsManager.instance.showPumpUpWindows("TRY");
+                //WindowsManager.instance.showPumpUpWindows("TRY");
+                WindowsManager.instance.showPumpUpWindows(false);
                 return;
             }
             ASR.text.text = "You lose...";//Debug.Log("You lose...");

@@ -150,11 +150,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f18eb12bc6dbdd04fb2bd4adfdb86317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  praiseImage:
+  - {fileID: 21300000, guid: 1c8c9001f7a305d478c2348585dbdbec, type: 3}
+  - {fileID: 21300000, guid: c6cd9ea97bfa8c948b3b3a35f91082db, type: 3}
+  tryImage:
+  - {fileID: 21300000, guid: 5706e497bab5aa34eb1403cc750ad82d, type: 3}
   pumpUpWindows: {fileID: 2900053874551576817, guid: 460931fc47b08ec4da98c45fa4ecbfec,
     type: 3}
   conclusionWindows: {fileID: 4281618413859882558, guid: 0343c1ae30050874d90bf1e252215e4d,
     type: 3}
-  audioSource: {fileID: 0}
+  pauseWindow: {fileID: 0}
   wavSlider: {fileID: 0}
 --- !u!4 &39790768
 Transform:
@@ -751,8 +757,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d15208480db874aaa7c9a058ee0e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guoChangUp: {fileID: 9100000, guid: 722ffd0291c79404e9f6be99017e3905, type: 2}
-  guoChangOut: {fileID: 9100000, guid: 461fa1dfadaa9fc4e962ea14b5cf1eb1, type: 2}
 --- !u!4 &1040718398
 Transform:
   m_ObjectHideFlags: 0

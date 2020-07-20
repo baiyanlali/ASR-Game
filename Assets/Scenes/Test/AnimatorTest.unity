@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &80182656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -669,9 +669,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f18eb12bc6dbdd04fb2bd4adfdb86317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   pumpUpWindows: {fileID: 0}
   conclusionWindows: {fileID: 0}
-  audioSource: {fileID: 0}
+  pauseWindow: {fileID: 0}
   wavSlider: {fileID: 0}
 --- !u!4 &722283005
 Transform:
@@ -705,7 +706,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &985662506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -909,12 +910,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 438092076790122174, guid: 0343c1ae30050874d90bf1e252215e4d,
+    - target: {fileID: 8260271691949703000, guid: 0343c1ae30050874d90bf1e252215e4d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8260271691949703000, guid: 0343c1ae30050874d90bf1e252215e4d,
+    - target: {fileID: 438092076790122174, guid: 0343c1ae30050874d90bf1e252215e4d,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1440,12 +1441,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 438092076790122174, guid: 0343c1ae30050874d90bf1e252215e4d,
+    - target: {fileID: 8260271691949703000, guid: 0343c1ae30050874d90bf1e252215e4d,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8260271691949703000, guid: 0343c1ae30050874d90bf1e252215e4d,
+    - target: {fileID: 438092076790122174, guid: 0343c1ae30050874d90bf1e252215e4d,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1

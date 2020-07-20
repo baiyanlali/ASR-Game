@@ -9,6 +9,11 @@ public class WindowsManager : MonoBehaviour
     public static WindowsManager instance;
     public AudioSource audioSource;
 
+    [Header("GoodImage")]
+    public Sprite [] praiseImage;
+    [Header("TryImage")]
+    public Sprite [] tryImage;
+
     void Start()
     {
         if (instance == null)
@@ -21,9 +26,10 @@ public class WindowsManager : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
+        
     }
 
-    public Text pumpUpWindows;
+    public GameObject pumpUpWindows;
     public GameObject conclusionWindows;
     public GameObject pauseWindow;
     public void initWindows()
@@ -37,7 +43,7 @@ public class WindowsManager : MonoBehaviour
         conclusionWindows.SetActive(false);
 
         string pumpUpWindowsPath = "prefabs/Windows/PumpUpWindows";
-        pumpUpWindows = Instantiate(Resources.Load<GameObject>(pumpUpWindowsPath), GameObject.Find("Canvas").transform).GetComponent<Text>();
+        pumpUpWindows = Instantiate(Resources.Load<GameObject>(pumpUpWindowsPath), GameObject.Find("Canvas").transform);
         pumpUpWindows.gameObject.SetActive(false);
         //conclusionWindows.transform.SetParent();
 
@@ -76,9 +82,17 @@ public class WindowsManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void showPumpUpWindows(string title)
+
+    public void showPumpUpWindows(bool isGood)
     {
-        pumpUpWindows.text = title;
+        if (isGood)
+        {
+            pumpUpWindows.GetComponent<Image>().sprite = praiseImage [Random.Range(0, praiseImage.Length)];
+        }
+        else
+        {
+            pumpUpWindows.GetComponent<Image>().sprite = tryImage [Random.Range(0, tryImage.Length)];
+        }
         StartCoroutine(showPumpUpWindows());
     }
 

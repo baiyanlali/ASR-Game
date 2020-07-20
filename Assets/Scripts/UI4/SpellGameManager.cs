@@ -151,7 +151,8 @@ public class SpellGameManager : MonoBehaviour,IGameManager
 
         if (wordIndex == wordNow.Length) 
         {
-            WindowsManager.instance.showPumpUpWindows("EXCELLENT");
+            WindowsManager.instance.showPumpUpWindows(true);
+            //WindowsManager.instance.showPumpUpWindows("EXCELLENT");
             StartCoroutine(nextPicture());
             
         }

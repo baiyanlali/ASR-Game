@@ -882,7 +882,7 @@ ScriptsOnlyBuild:
     className: TestResultRendererCallback
   - hash:
       serializedVersion: 2
-      Hash: 5465d08175ec77db9d1f0083e1c58a93
+      Hash: 9253e8d638a8847dd8e4ba01aa9cabd5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WindowsManager
