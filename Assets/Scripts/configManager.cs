@@ -218,5 +218,11 @@ public class setting
     public int lang; //0 chinese 1 englsih
     public bool music;
     public bool sfx;
+    /// <summary>
+    /// 0 is easy, 1 is middle, 2 is hard
+    /// </summary>
+    public int difficulty;
+
+    public int coin;
     public Dictionary<string, int> ranking;
 }

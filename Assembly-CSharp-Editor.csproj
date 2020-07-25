@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Editor\CreatFont.cs" />
+    <Compile Include="Assets\LeanTween\Editor\LeanTweenDocumentationEditor.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Projects/YouErASR/ASR-Game/ASR-Game/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

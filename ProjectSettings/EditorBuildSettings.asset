@@ -9,11 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/StartUpScene.unity
     guid: 88a4499326eb84c4f9e9e63f77080659
   - enabled: 1
-    path: Assets/Scenes/Menu(Another)Scene.unity
-    guid: 0330630a60df32c4aa991bf4dec8beb2
-  - enabled: 0
     path: Assets/Scenes/MenuScene.unity
-    guid: 69a43d0e4a2e0ca4d99ffa07de44a5fc
+    guid: 0330630a60df32c4aa991bf4dec8beb2
   - enabled: 1
     path: Assets/Scenes/Games/CountApple.unity
     guid: 28c8757a85de69f43b5f452c659d350e
@@ -23,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Games/Spell.unity
     guid: e0526fbb5bd5f0a47ab464e0f1ceac50
+  - enabled: 1
+    path: Assets/Scenes/RewardScene.unity
+    guid: 69a43d0e4a2e0ca4d99ffa07de44a5fc
   m_configObjects: {}

@@ -190,6 +190,8 @@ public class GameFlowManager : MonoBehaviour
     public void gameOver()
     {
         isOver = true;
+        configManager.instance.mySetting.coin += score;
+        configManager.instance.saveSetting();
         StartCoroutine(EndGame());
     }
 

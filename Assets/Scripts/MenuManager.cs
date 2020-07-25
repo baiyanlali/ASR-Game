@@ -20,16 +20,16 @@ public class MenuManager : MonoBehaviour
         {
             Microphone.Start(Microphone.devices [0], false, 1, 16000);
         }
-
+        WindowsManager.instance.initWindowsLite();
     }
 
     private void BackToMenu(Scene arg0, Scene arg1)
     {
-        guoChang = GameObject.Find("GuoChang");
-        anim_guoChang = guoChang.GetComponent<Animator>();
+        //guoChang = GameObject.Find("GuoChang");
+        //anim_guoChang = guoChang.GetComponent<Animator>();
         if (arg1.buildIndex == 1)
         {
-            guoChang.SetActive(true);
+            //guoChang.SetActive(true);
         }
 
     }
@@ -57,5 +57,10 @@ public class MenuManager : MonoBehaviour
         yield return null;
     }
 
-    
+    public void showSettingWindow()
+    {
+        WindowsManager.instance.showSettingWindow();
+    }
+
+
 }
