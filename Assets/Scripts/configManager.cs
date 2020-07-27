@@ -47,7 +47,8 @@ public class configManager : MonoBehaviour
     {
         //requestPermission();
         loadSetting();
-        yield return StartCoroutine(serverRequest());
+        if(Application.isMobilePlatform)
+            yield return StartCoroutine(serverRequest());
         yield return StartCoroutine(loadScene(1));
     }
 

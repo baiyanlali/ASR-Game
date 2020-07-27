@@ -15,10 +15,9 @@ public class GameFlowManager : MonoBehaviour
 {
 
     public GameObject gameManager;
-    public GameObject guoChang;
+    public RectTransform guoChang;
     public Text reverseCount;
     public Text scoreText, timeText;
-    public Animator anim_guoChang;
 
     private StringBuilder str;
     private string str_before;
@@ -44,22 +43,22 @@ public class GameFlowManager : MonoBehaviour
             ASR.recorderSetUp(0);
             ASR.text.text = "Asr has set up";
         }
-        
-        anim_guoChang = guoChang.GetComponent<Animator>();
+        guoChang = GameObject.Find("GuoChang").GetComponent<RectTransform>();
         reverseCount.gameObject.SetActive(false);
         StartCoroutine(StartGame());
     }
 
     IEnumerator StartGame()
     {
+        LeanTween.alpha(guoChang, 0, 0.5f);
+
         if (WindowsManager.instance!=null)
             WindowsManager.instance.initWindows();
+
+        //pretend it's over to hold the time
         isOver = true;
          
-        //anim_guoChang.runtimeAnimatorController = animControllerOut;
-        anim_guoChang.Play("UIZoomOut");
         yield return new WaitForSeconds(1f);
-        guoChang.SetActive(false);
         reverseCount.gameObject.SetActive(true);
         reverseCount.text = "3";
         yield return new WaitForSeconds(1f);
@@ -117,29 +116,7 @@ public class GameFlowManager : MonoBehaviour
                     gameManagerInterface.recieveAsrResult(strs[strs.Length-1]);
                 }
                 #endregion
-                #region old code
-                //#region First Saying
-                //if (str_before.Equals("") && !str.ToString().Equals("")) 
-                //{
-                //    gameManagerInterface.recieveAsrResult(str.ToString());
-                //    return;
-                //}
-                //#endregion
-
-                //#region Continous Saying
-                //str_single = StringTool.minus(str.ToString(), str_before);
-                ////example "C " change to "six "
-                //if (str_single.Equals("!@#$%"))
-                //{
-
-
-                //}
-                //if (!str_single.Equals(str.ToString()))
-                //{
-                //    gameManagerInterface.recieveAsrResult(str_single);
-                //}
-                //#endregion
-                #endregion
+              
             }
         }
         catch (System.Exception o)

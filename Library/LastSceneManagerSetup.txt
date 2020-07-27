@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Test/StringTest.unity
+- path: Assets/Scenes/RewardScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

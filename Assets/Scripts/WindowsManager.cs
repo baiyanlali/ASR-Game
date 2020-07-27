@@ -120,7 +120,7 @@ public class WindowsManager : MonoBehaviour
 
     private void initConclusionWindow()
     {
-        string windowsBgPath = "prefabs/Windows/WindowsBg";
+        string windowsBgPath = "prefabs/Windows/ConclusionWindow";
         GameObject windowsBg = Resources.Load<GameObject>(windowsBgPath);
         conclusionWindows = Instantiate(windowsBg, GameObject.Find("Canvas").transform);
         conclusionWindows.SetActive(false);
@@ -130,10 +130,10 @@ public class WindowsManager : MonoBehaviour
         replayBtn.onClick.AddListener(replay);
         Button returnBtn = conclusionWindows.transform.Find("ReturnBtn").GetComponent<Button>();
         returnBtn.onClick.AddListener(returnFunc);
-        Button playBtn = conclusionWindows.transform.Find("PlayBtn").GetComponent<Button>();
-        playBtn.onClick.AddListener(delegate { playWav(configManager.instance.mySetting.lang); });
-        wavSlider = conclusionWindows.GetComponentInChildren<Slider>();
-        scoreText = conclusionWindows.transform.Find("Text").GetComponent<Text>();
+        //Button playBtn = conclusionWindows.transform.Find("PlayBtn").GetComponent<Button>();
+        //playBtn.onClick.AddListener(delegate { playWav(configManager.instance.mySetting.lang); });
+        //wavSlider = conclusionWindows.GetComponentInChildren<Slider>();
+        scoreText = conclusionWindows.transform.Find("ConclusionWindowPanel").Find("Text").GetComponent<Text>();
         #endregion
 
         conclusionWindows.SetActive(false);
@@ -193,7 +193,7 @@ public class WindowsManager : MonoBehaviour
     {
         //print("show conclusion windows");
         conclusionWindows.SetActive(true);
-        scoreText.text = $"You have won \n{score}\n scores!!";
+        scoreText.text = score.ToString();
         
     }
 
@@ -204,9 +204,19 @@ public class WindowsManager : MonoBehaviour
     }
 
     public void returnFunc(){
+        StartCoroutine(returnToMenu());
+    }
+
+    IEnumerator returnToMenu()
+    {
+        RectTransform guoChang = GameObject.Find("GuoChang").GetComponent<RectTransform>();
         audioSource.Stop();
         Time.timeScale = 1;
-        SceneManager.LoadSceneAsync(1);
+        AsyncOperation asyn = SceneManager.LoadSceneAsync(1);
+        asyn.allowSceneActivation = false;
+        LeanTween.alpha(guoChang, 1, 0.5f);
+        yield return new WaitForSeconds(0.5f);
+        asyn.allowSceneActivation = true;
     }
 
     bool isPlaying = false;

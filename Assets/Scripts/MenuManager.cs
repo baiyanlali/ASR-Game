@@ -7,14 +7,12 @@ using UnityEngine.Android;
 public class MenuManager : MonoBehaviour
 {
 
-    GameObject guoChang ;
-    Animator anim_guoChang;
+    RectTransform guoChang ;
 
     void Start()
     {
-        guoChang = GameObject.Find("GuoChang");
-        anim_guoChang = guoChang.GetComponent<Animator>();
-        guoChang.SetActive(false);
+        guoChang = GameObject.Find("GuoChang").GetComponent<RectTransform>();
+        LeanTween.alpha(guoChang, 0, 0.5f);
         SceneManager.activeSceneChanged += BackToMenu;
         if (Permission.HasUserAuthorizedPermission(Permission.Microphone)==false)
         {
@@ -25,6 +23,7 @@ public class MenuManager : MonoBehaviour
 
     private void BackToMenu(Scene arg0, Scene arg1)
     {
+        print($"From {arg0.name} to {arg1.name}");
         //guoChang = GameObject.Find("GuoChang");
         //anim_guoChang = guoChang.GetComponent<Animator>();
         if (arg1.buildIndex == 1)
@@ -43,9 +42,9 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator LoadSceneAsyn(string SceneName)
     {
-        guoChang.SetActive(true);
-        Animator anim = guoChang.GetComponent<Animator>();
-        anim.Play("UIZoomUp");
+        //Animator anim = guoChang.GetComponent<Animator>();
+        //anim.Play("UIZoomUp");
+        LeanTween.alpha(guoChang, 1, 0.5f);
 
         AsyncOperation asyn = SceneManager.LoadSceneAsync(SceneName,LoadSceneMode.Single);
         asyn.allowSceneActivation = false;
@@ -62,5 +61,7 @@ public class MenuManager : MonoBehaviour
         WindowsManager.instance.showSettingWindow();
     }
 
+
+    
 
 }

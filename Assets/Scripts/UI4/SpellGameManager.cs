@@ -129,7 +129,7 @@ public class SpellGameManager : MonoBehaviour,IGameManager
             
             return;
         }
-        else if (strResult.Length > 2)
+        else if (strResult.Length >= 2)
         {
             if (Application.isMobilePlatform)
                 ASR.text.text = $"{strResult} is to much";

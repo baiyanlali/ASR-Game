@@ -108,6 +108,7 @@
     <Compile Include="Assets\Scripts\ScriptableObj\Commodity.cs" />
     <Compile Include="Assets\Scripts\Test\PCMTest.cs" />
     <Compile Include="Assets\Scripts\Test\StringTest.cs" />
+    <Compile Include="Assets\Scripts\TweenTest.cs" />
     <Compile Include="Assets\Scripts\UI4\Banner.cs" />
     <Compile Include="Assets\Scripts\UI4\SpellGameManager.cs" />
     <Compile Include="Assets\Scripts\UI4\Words.cs" />

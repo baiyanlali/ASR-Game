@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="Creat Commodity")]
 public class Commodity : ScriptableObject
 {
+    public bool locked = true;
     public string title;
     public string description;
     public int coinCost;
